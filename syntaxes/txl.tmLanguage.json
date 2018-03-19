@@ -1,0 +1,67 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "TXL",
+	"fileTypes": [
+		"txl",
+		"grm"
+	],
+	"patterns": [
+		{
+			"comment": "Main keywords",
+			"name": "keyword.control.txl",
+			"match": "\\b(?<!')(define|end|function|keys|compounds|tokens|comments|replace|construct|by|replace|rule|deconstruct|not|where|all|not|assert|export|import|redefine|external|match|skipping|include|then)\\b"
+		},
+		{
+			"comment": "Preprocessor keywords",
+			"name": "meta.preprocessor.txl",
+			"match": "(?<!')#\\s*(pragma|endif|else|define|undef|undefine|ifn|elifn|elifdef|elifndef|ifndef|ifdef|if|end)",
+			"captures": {
+				"1": {
+					"name": "keyword.control.txl"
+				}
+			}
+		},
+		{
+			"comment": "Multi-line comments",
+			"name": "comment.block.txl",
+			"begin": "(?<!')%[\\({]",
+			"end": "(?<!')[\\)}]%"
+		},
+		{
+			"comment": "Comment",
+			"name": "comment.txl",
+			"match": "(?<!')%.*"
+		},
+		{
+			"comment": "Built in functions, conditionals, repeats, etc",
+			"name": "entity.name.function.txl",
+			"match": "(?<!')\\[(not|opt|repeat|list|see|push|pop|\\+|-|/|\\*|=|<|>|\\^|\\.|div|rem|:|#|index|_|length|select|head|tail|,|~=|>=|<=|grep|\\$|quote|unquote|parse|unparse|reparse|typeof|istype|read|write|fget|getp|fput|putp|fputp|fputs|fclose|fopen|fgets|message|pragma|quit|system|pipe|attr) .+?\\]"
+		},
+		{
+			"comment": "Formatting hints",
+			"name": "constant.language.txl",
+			"match": "(?<!')\\[(NL|EX(_\\d+)?|IN(_\\d+)?|SP(_\\d+)?|TAB(_\\d+)?|SPON|SPOFF|\\!|round|trunc|toupper|tolower|get|put|gets|print|printattr|debug|breakpoint)\\]"
+		},
+		{
+			"comment": "Regular non-terminals",
+			"name": "storage.type.txl",
+			"match": "(?<!')\\[.+?\\]"
+		},
+		{
+			"comment": "Numbers (including floating point)",
+			"name": "constant.numeric.txl",
+			"match": "\\b(\\d+)|(\\d+\\.\\d+([\\+-][Ee]\\d+)?)\\b"
+		},
+		{
+			"comment": "String literals",
+			"name": "string.quoted.double.txl",
+			"match": "\".*\""
+		},
+		{
+			"comment": "String literals",
+			"name": "string.quoted.single.txl",
+			"match": "'[^\\s]*"
+		}
+	],
+	"scopeName": "source.txl"
+}
