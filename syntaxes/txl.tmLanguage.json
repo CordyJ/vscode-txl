@@ -3,7 +3,8 @@
 	"name": "TXL",
 	"fileTypes": [
 		"txl",
-		"grm"
+		"grm",
+		"rul"
 	],
 	"patterns": [
 		{
